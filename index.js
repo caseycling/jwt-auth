@@ -12,7 +12,7 @@ dotenv.config();
 
 //Connect to db
 mongoose.connect(
-  `mongodb+srv://casey:123abc@cluster0.ycufd.mongodb.net/awt?retryWrites=true&w=majority`,
+  DB_CONNECT,
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err) => {
     if (err) {
