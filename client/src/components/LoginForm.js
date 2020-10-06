@@ -3,7 +3,6 @@ import Axios from 'axios';
 import { Redirect } from 'react-router';
 
 class LoginForm extends React.Component {
-  //STORE INPUTED EMAIL AND PASSWORD
   state = {
     email: '',
     password: '',
@@ -11,14 +10,13 @@ class LoginForm extends React.Component {
   };
 
   handleChange = (event) => {
-    //SET STATE TO EMAIL AND PASSWORD INPUT VALUE
     this.setState({
       [event.target.name]: event.target.value,
     });
   };
 
-  signUp = async () => {
-    //AXIOS CALL TO api/user/login ROUTE
+  //AXIOS CALL TO api/user/login ROUTE
+  logIn = async () => {
     try {
       const response = await Axios.post(
         'http://localhost:3000/api/user/login',
@@ -65,7 +63,7 @@ class LoginForm extends React.Component {
           onChange={this.handleChange}
         />
         <br />
-        <input type='submit' onClick={this.signUp} />
+        <input type='submit' onClick={this.logIn} />
       </div>
     );
   }
