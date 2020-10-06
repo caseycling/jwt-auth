@@ -6,17 +6,27 @@ function SignUpForm() {
       <h1>Sign Up</h1>
       <label> Name</label>
       <br />
-      <input type='text' id='name' name='name' value='John Doe' />
+      <input type='text' id='name' name='name' placeholder='John Doe' />
       <br />
       <label> Email</label>
       <br />
-      <input type='text' id='email' name='email' value='johndoe@email.com' />
+      <input
+        type='text'
+        id='email'
+        name='email'
+        placeholder='johndoe@email.com'
+      />
       <br />
       <label> Password</label>
       <br />
-      <input type='text' id='email' name='email' value='Enter password...' />
+      <input
+        type='text'
+        id='password'
+        name='password'
+        placeholder='Enter password...'
+      />
       <br />
-      <input type='submit' value='Submit' />
+      <input type='submit' />
     </div>
   );
 }
