@@ -33,7 +33,7 @@ class LoginForm extends React.Component {
       console.log(response);
       console.log(this.state);
     } catch (err) {
-      console.log(err);
+      console.log(err.response.data);
     }
   };
 
