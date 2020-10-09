@@ -29,8 +29,8 @@ class LoginForm extends React.Component {
         email: '',
         password: '',
         loggedIn: true,
+        token: response.data,
       });
-      console.log(response);
       console.log(this.state);
     } catch (err) {
       console.log(err.response.data);
@@ -39,7 +39,7 @@ class LoginForm extends React.Component {
 
   render() {
     return this.state.loggedIn ? (
-      <Redirect to='/' />
+      <Redirect to={{ pathname: '/', state: { token: this.state.token } }} />
     ) : (
       <div className='login-cont'>
         <h1>Log In</h1>
