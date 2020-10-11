@@ -34,7 +34,7 @@ class SignUpForm extends React.Component {
       });
       console.log(response);
     } catch (err) {
-      console.log(err.response.data);
+      console.log(err.response);
     }
   };
 

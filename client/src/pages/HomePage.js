@@ -49,11 +49,10 @@ export default class HomePage extends Component {
 
   render() {
     //Redirect to login page if no token
-    // console.log(this.state.posts);
     return (
       <div>
         <h1>Home Page</h1>
-        {/* {this.state.posts.map((post) => (
+        {this.state.posts.map((post) => (
           <div
             key={post._id}
             style={{ border: '1px solid black', marginBottom: '2rem' }}
@@ -62,7 +61,7 @@ export default class HomePage extends Component {
             <p>By: {post.email}</p>
             <p>{post.description}</p>
           </div>
-        ))} */}
+        ))}
       </div>
     );
   }

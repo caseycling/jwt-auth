@@ -7,22 +7,22 @@ import SignUpPage from './pages/SignUpPage';
 
 import './App.css';
 
-function App() {
-  return (
-    <div className='App'>
-      <Router>
-        <Route exact path='/'>
-          <HomePage />
-        </Route>
-        <Route path='/login'>
-          <LoginPage />
-        </Route>
-        <Route path='/signup'>
-          <SignUpPage />
-        </Route>
-      </Router>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <div className='App'>
+        <Router>
+          <Route exact path='/' render={(props) => <HomePage {...props} />} />
+          <Route path='/login'>
+            <LoginPage />
+          </Route>
+          <Route path='/signup'>
+            <SignUpPage />
+          </Route>
+        </Router>
+      </div>
+    );
+  }
 }
 
 export default App;
