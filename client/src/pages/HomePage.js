@@ -6,33 +6,54 @@ export default class HomePage extends Component {
   state = {
     posts: [],
     token: '',
+    id: '',
   };
 
-  //Display posts when homepage renders
-  componentDidMount() {
-    //If token exists, run lifecycle event
-    if (this.state.token) {
-      this.setState({ token: this.props.location.state.token });
-      Axios.get('http://localhost:3000/api/posts/all')
-        .then((req) => {
-          this.setState({ posts: req.data });
+  //Get user token
+  getUser() {
+    const token = this.props.location.state.token;
+    if (token) {
+      this.setState({ token: token });
+      Axios.get('http://localhost:3000/api/posts', {
+        headers: {
+          'auth-token': token,
+        },
+      })
+        .then((res) => {
+          this.setState({ id: res.data._id });
+          this.getPosts(res.data._id);
         })
         .catch((err) => {
-          console.log(err.message);
+          console.log(err);
           throw err;
         });
-      console.log(this.state);
     }
+  }
+
+  //Get specific posts
+  getPosts(id) {
+    Axios.get(`http://localhost:3000/api/posts/all/${id}`)
+      .then((res) => {
+        console.log(res);
+        this.setState({ posts: res.data });
+      })
+      .catch((err) => {
+        console.log(err.message);
+        throw err;
+      });
+  }
+
+  componentDidMount() {
+    this.getUser();
   }
 
   render() {
     //Redirect to login page if no token
-    return !this.state.token ? (
-      <Redirect to='/login' />
-    ) : (
+    // console.log(this.state.posts);
+    return (
       <div>
         <h1>Home Page</h1>
-        {this.state.posts.map((post) => (
+        {/* {this.state.posts.map((post) => (
           <div
             key={post._id}
             style={{ border: '1px solid black', marginBottom: '2rem' }}
@@ -41,7 +62,7 @@ export default class HomePage extends Component {
             <p>By: {post.email}</p>
             <p>{post.description}</p>
           </div>
-        ))}
+        ))} */}
       </div>
     );
   }
