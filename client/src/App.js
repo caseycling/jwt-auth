@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
-import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
-import SignUpPage from './pages/SignUpPage';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Registration from './pages/Registration';
 
 import './App.css';
 
@@ -12,12 +12,12 @@ class App extends React.Component {
     return (
       <div className='App'>
         <Router>
-          <Route exact path='/' render={(props) => <HomePage {...props} />} />
+          <Route exact path='/' render={(props) => <Home {...props} />} />
           <Route path='/login'>
-            <LoginPage />
+            <Login />
           </Route>
-          <Route path='/signup'>
-            <SignUpPage />
+          <Route path='/register'>
+            <Registration />
           </Route>
         </Router>
       </div>
