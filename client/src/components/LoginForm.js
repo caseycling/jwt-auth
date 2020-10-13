@@ -1,9 +1,9 @@
 import React from 'react';
-// import Axios from 'axios';
 import { Redirect } from 'react-router';
 
-function LoginForm() {
-  return this.props.loggedIn ? (
+function LoginForm(props) {
+  const loggedIn = props.loggedIn;
+  return loggedIn ? (
     <Redirect to={'/'} />
   ) : (
     <div className='login-cont'>
@@ -15,7 +15,7 @@ function LoginForm() {
         id='email'
         name='email'
         placeholder='John@email.com'
-        onChange={this.props.handleChange}
+        onChange={props.handleChange}
       />
       <br />
       <label> Password</label>
@@ -25,10 +25,10 @@ function LoginForm() {
         id='password'
         name='password'
         placeholder='Password'
-        onChange={this.props.handleChange}
+        onChange={props.handleChange}
       />
       <br />
-      <input type='submit' onClick={this.props.logIn} />
+      <input type='submit' onClick={props.logIn} />
     </div>
   );
 }
