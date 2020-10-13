@@ -1,10 +1,18 @@
 import React from 'react';
 import LoginForm from '../components/LoginForm';
 
-function login() {
+function login(props) {
+  const loggedIn = props.loggedIn;
+  const handleChange = props.handleChange;
+  const logIn = props.logIn;
+
   return (
     <div>
-      <LoginForm />
+      <LoginForm
+        loggedIn={loggedIn}
+        handleChange={handleChange}
+        logIn={logIn}
+      />
     </div>
   );
 }
